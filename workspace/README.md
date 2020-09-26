@@ -31,7 +31,6 @@
     - [Add Site Header Component](#add-site-header-component)
     - [Add Site Footer Component](#add-site-footer-component)
   - [Common Module](#common-module)
-  - [Serverless Deploy Angular App](#serverless-deploy-angular-app)
   - [Nx](#nx)
     - [Quick Start & Documentation](#quick-start--documentation)
     - [Adding capabilities to your workspace](#adding-capabilities-to-your-workspace)
@@ -835,68 +834,6 @@ UPDATE angular.json (23365 bytes)
 UPDATE nx.json (1078 bytes)
 UPDATE tsconfig.json (1439 bytes)
 √ Packages installed successfully.
-```
-
-## Serverless Deploy Angular App
-
-Use the `serverless` tool to deploy to AWS CloudFront.
-
-> [https://github.com/serverless/examples/tree/master/aws-node-single-page-app-via-cloudfront](https://github.com/serverless/examples/tree/master/aws-node-single-page-app-via-cloudfront)
-
-Install the AWS CLI.
-
-> [https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-windows.html](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-windows.html)
-
-> [BUCKET-NAME].s3-website.[BUCKET-ZONE].amazonaws.com
-> [http://reference-contacts.s3-website-us-west-1.amazonaws.com/](http://reference-contacts.s3-website-us-west-1.amazonaws.com/)
-
-Attempting to access the web application without any public permissions will provide the following error message.
-
-```ts
-403 Forbidden
-Code: AccessDenied
-Message: Access Denied
-RequestId: 9236B5475625A198
-HostId: 5phd+P8U087J37FgfxV1YYoMv04yYQcbf4nKGto+8xJNyTu9xAlzZ1IylBJ+BIwx4EXprdxrB+k=
-An Error Occurred While Attempting to Retrieve a Custom Error Document
-Code: AccessDenied
-Message: Access Denied
-```
-
-```json
-{
-  "Version": "2020-9-11",
-  "Statement": [
-    {
-      "Sid": "AddPermission",
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": ["s3:GetObject"],
-      "Resource": ["arn:aws:s3:::reference-contacts/*"]
-    }
-  ]
-}
-```
-
-Running the URL will create a 404 error - the application has not been uploaded to the S3 bucket.
-
-```ts
-404 Not Found
-Code: NoSuchKey
-Message: The specified key does not exist.
-Key: index.html
-RequestId: CX4YEP5JAJ4R9GBJ
-HostId: hzmg7xRvhZgR16BZ6cEn/Let8RORnsJnycjiFWLu5+QNj3o2Fz4c2b1ERF20M61DT52yEqbWSNk=
-An Error Occurred While Attempting to Retrieve a Custom Error Document
-Code: NoSuchKey
-Message: The specified key does not exist.
-Key: index.html
-```
-
-ARN
-
-```ts
-arn:aws:s3:::reference-contacts
 ```
 
 ## Nx
