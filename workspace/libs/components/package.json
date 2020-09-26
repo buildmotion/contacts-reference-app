@@ -1,0 +1,24 @@
+{
+  "name": "@angular-architecture/components",
+  "version": "0.0.1",
+  "description": "Use @angular-architecture/components for common pipes and directives.",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "typescript",
+    "business logic",
+    "business actions",
+    "business rules",
+    "angularlicious",
+    "validation",
+    "javascript rules",
+    "Matt Vaughn",
+    "AngularArchitecture.com"
+  ],
+  "author": "matt@angulararchitecture.com",
+  "peerDependencies": {
+    "@angular/common": "^9.0.6",
+    "@angular/core": "^9.0.6",
+    "tslib": "^1.10.0"
+  }
+}

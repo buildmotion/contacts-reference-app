@@ -1,0 +1,35 @@
+h1 {
+  visibility: visible;
+  animation-delay: 0.2s;
+  animation-name: fadeIn;
+  // margin-top: 12px;
+  display: inline;
+}
+
+#contact-list h3 {
+  margin-top: 0px;
+}
+
+.qc-contact-list--default {
+  display: flex;
+  flex-direction: row;
+  // flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-right: 22px;
+  padding-left: 22px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.qc-contact-list--default-item {
+  align-self: center;
+  flex-basis: 88%;
+  padding-left: 12px;
+}
+
+.qc-contact-list--add-button {
+  align-self: flex-end;
+  flex-basis: 88%;
+  padding-right: 36px;
+  padding-bottom: 12px;
+}

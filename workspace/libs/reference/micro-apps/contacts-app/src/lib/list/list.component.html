@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="qc-contact-list--default-item">
+    <ng-container *ngIf="showSpinner$ | async as showSpinner; else contactListTemplate">
+      <!-- PLEASE WAIT WHILE WE RETRIEVE YOUR CONTACTS -->
+      <sprk-modal [isVisible]="showSpinner" title="Retrieving contacts..." modalType="wait" idString="modal-wait-1">
+        <p class="sprk-c-Modal__content">
+          Please wait while we retrieve your contacts.
+        </p>
+      </sprk-modal>
+    </ng-container>
+    <ng-container *ngIf="removeContactSpinner$ | async as removeContactSpinner">
+      <!-- PLEASE WAIT WHILE WE [REMOVE] THE CONTACT -->
+      <sprk-modal [isVisible]="removeContactSpinner" title="Removing contact..." modalType="wait" idString="modal-wait-1">
+        <p class="sprk-c-Modal__content">
+          Please wait while we remove the selected contact.
+        </p>
+      </sprk-modal>
+    </ng-container>
+    <ng-template #contactListTemplate>
+      <ng-container *ngIf="contacts$ | async as contacts; else listTemplate">
+        <div class="qc-contact-list--default-item ">
+          <h1>Contacts</h1>
+        </div>
+        <div class="qc-contact-list--add-button">
+          <button (click)="addContact()" variant="secondary" idString="button-secondary" sprkButton>
+            Add contact
+          </button>
+        </div>
+        <!-- CONTACT(S) TABLE -->
+        <sprk-table idString="table-1">
+          <thead sprkTableHead>
+            <tr>
+              <th>Contact</th>
+              <th>Address</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of contacts">
+              <td>{{ item.lastName }}, {{ item.firstName }}</td>
+              <td>{{ item.address1 }}, {{ item.city }}, {{ item.state }} {{ item.postalCode }}</td>
+              <td>
+                <a href="mailto:{{ item.emailAddress }}">{{ item.emailAddress }}</a>
+              </td>
+              <td>
+                <a href="tel:{{ item.phone }}">{{ item.phone }}</a>
+              </td>
+              <td>
+                <button (click)="removeContact(item)" idString="button-primary" sprkButton>
+                  Remove
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </sprk-table>
+        <sprk-divider idString="divider-1"></sprk-divider>
+      </ng-container>
+      <ng-template #listTemplate>
+        <!-- DISPLAY NO DATA MESSAGE TO USER -->
+        <sprk-alert alertType="fail" idString="alert-fail-1" analyticsString="object.action.event">
+          The application attempted to retrieve your contacts - however, it was not successful.
+        </sprk-alert>
+      </ng-template>
+    </ng-template>
+  </div>
+</div>

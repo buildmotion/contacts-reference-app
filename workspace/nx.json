@@ -1,0 +1,61 @@
+{
+  "npmScope": "valencia",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "reference-contacts": {
+      "tags": []
+    },
+    "reference-contacts-e2e": {
+      "tags": [],
+      "implicitDependencies": ["reference-contacts"]
+    },
+    "actions": {
+      "tags": []
+    },
+    "components": {
+      "tags": []
+    },
+    "configuration": {
+      "tags": []
+    },
+    "error-handling": {
+      "tags": []
+    },
+    "foundation": {
+      "tags": []
+    },
+    "http-service": {
+      "tags": []
+    },
+    "logging": {
+      "tags": []
+    },
+    "notification": {
+      "tags": []
+    },
+    "rules-engine": {
+      "tags": []
+    },
+    "reference-micro-apps-contacts-app": {
+      "tags": []
+    },
+    "reference-domain-contacts-service": {
+      "tags": []
+    },
+    "common": {
+      "tags": []
+    },
+    "reference-domain-common": {
+      "tags": []
+    }
+  }
+}

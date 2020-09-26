@@ -1,0 +1,24 @@
+{
+  "name": "@angular-architecture/rules-engine",
+  "version": "0.0.1",
+  "description": "@angular-architecture/rule-engine is a robust rule engine based on inference/rete patterns. Use pre-built rules and/or custom rules.",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "typescript",
+    "business logic",
+    "business actions",
+    "business rules",
+    "angularlicious",
+    "validation",
+    "javascript rules",
+    "Matt Vaughn",
+    "AngularArchitecture.com"
+  ],
+  "author": "matt@angulararchitecture.com",
+  "peerDependencies": {
+    "@angular/common": "^9.0.6",
+    "@angular/core": "^9.0.6",
+    "tslib": "^1.10.0"
+  }
+}

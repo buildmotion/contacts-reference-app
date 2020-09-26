@@ -1,0 +1,13 @@
+{
+  "options": [],
+  "address1": "1234 MAIN ST",
+  "address2": "Apt #1",
+  "city": "Denver",
+  "company": "Denver Tacos",
+  "emailAddress": "joe@email.com",
+  "firstName": "Joe",
+  "lastName": "Schmo",
+  "phone": "303.555.1234",
+  "postalCode": "80504",
+  "state": "Colorado"
+}

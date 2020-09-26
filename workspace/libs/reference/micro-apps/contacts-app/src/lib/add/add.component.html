@@ -1,0 +1,361 @@
+<div class="container">
+  <sprk-highlight-board
+    heading="Hello, Welcome To Spark Design System"
+    ctaText="Designers"
+    ctaHref="#nogo"
+    ctaText2="Developers"
+    ctaHref2="#nogo"
+    imgSrc="https://spark-assets.netlify.app/desktop.jpg"
+    imgAlt="Add New Contact"
+    idString="highlightboard-1"
+  >
+  </sprk-highlight-board>
+
+  <section id="default" class="qc-new-contact--default">
+    <div class="qc-new-contact--default-item">
+      <h1>New Contact</h1>
+
+      <!-- NOTIFICATIONS :: START -->
+      <ng-container *ngIf="successMessage$ | async as message">
+        <sprk-alert alertType="success" idString="alert-success-1" analyticsString="object.action.event">
+          {{ message }}
+        </sprk-alert>
+      </ng-container>
+      <ng-container *ngIf="failMessage$ | async as message">
+        <sprk-alert alertType="fail" idString="alert-fail-1" analyticsString="object.action.event">
+          {{ message }}
+        </sprk-alert>
+      </ng-container>
+      <!-- NOTIFICATIONS :: END -->
+
+      <ng-container *ngIf="showSpinner$ | async as show; else formTemplate">
+        <sprk-modal [isVisible]="show" title="New Contact..." modalType="wait" idString="modal-wait-1">
+          <p class="sprk-c-Modal__content">
+            Please wait while we add your contact to the cloud.
+          </p>
+        </sprk-modal>
+      </ng-container>
+      <ng-template #formTemplate>
+        <!-- REACTIVE FORM -->
+        <form [formGroup]="addContactForm" (ngSubmit)="onSubmit()" novalidate>
+          <sprk-card cardType="base" idString="card-default">
+            <div
+              class="
+              sprk-o-Stack__item
+              sprk-c-Card__content
+              sprk-o-Stack
+              sprk-o-Stack--medium"
+            >
+              <div class="qc-new-contact--default-item">
+                <!-- FIRST NAME -->
+                <sprk-input-container class="sprk-b-InputContainerCustom">
+                  <label sprkLabel>First Name</label>
+                  <input
+                    formControlName="firstName"
+                    maxlength="45"
+                    name="firstName"
+                    type="text"
+                    [ngClass]="hasError('firstName') ? 'sprk-b-TextInput--error' : ''"
+                    sprkInput
+                    aria-invalid="hasError('firstName')"
+                  />
+                </sprk-input-container>
+                <ng-container
+                  *ngIf="
+                    !addContactForm.valid && addContactForm.get('firstName').touched && addContactForm.get('firstName').hasError('minlength')
+                  "
+                >
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The first name minimum length is 3.</div>
+                  </span>
+                </ng-container>
+                <ng-container
+                  *ngIf="
+                    !addContactForm.valid && addContactForm.get('firstName').touched && addContactForm.get('firstName').hasError('required')
+                  "
+                >
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The first name is required.</div>
+                  </span>
+                </ng-container>
+
+                <!-- LAST NAME -->
+                <sprk-input-container>
+                  <label sprkLabel>Last Name</label>
+                  <input
+                    formControlName="lastName"
+                    maxlength="45"
+                    name="lastName"
+                    type="text"
+                    [ngClass]="hasError('lastName') ? 'sprk-b-TextInput--error' : ''"
+                    sprkInput
+                  />
+                </sprk-input-container>
+                <ng-container *ngIf="!addContactForm.valid && addContactForm.get('lastName').touched && lastName.hasError('required')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The last name is required.</div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="!addContactForm.valid && addContactForm.get('lastName').touched && lastName.hasError('minlength')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The last name minimum length is 2.</div>
+                  </span>
+                </ng-container>
+
+                <!-- COMPANY -->
+                <sprk-input-container>
+                  <label sprkLabel>Company</label>
+                  <input
+                    formControlName="company"
+                    maxlength="45"
+                    name="company"
+                    type="text"
+                    [ngClass]="hasError('company') ? 'sprk-b-TextInput--error' : ''"
+                    sprkInput
+                  />
+                </sprk-input-container>
+                <ng-container *ngIf="!addContactForm.valid && addContactForm.get('company').touched && company.hasError('required')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The company name is required.</div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="!addContactForm.valid && addContactForm.get('company').touched && company.hasError('minlength')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The company minimum length is 1.</div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="!addContactForm.valid && addContactForm.get('company').touched && company.hasError('maxlength')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The company maximum length is 45 characters.</div>
+                  </span>
+                </ng-container>
+
+                <!-- EMAIL ADDRESS -->
+                <sprk-input-container>
+                  <label sprkLabel>Email Address</label>
+                  <input
+                    formControlName="emailAddress"
+                    maxlength="45"
+                    name="emailAddress"
+                    type="email"
+                    [ngClass]="hasError('emailAddress') ? 'sprk-b-TextInput--error' : ''"
+                    sprkInput
+                  />
+                  <ng-container *ngIf="!addContactForm.valid && emailAddress.touched && emailAddress.hasError('required')">
+                    <span sprkFieldError>
+                      <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                      <div class="sprk-b-ErrorText">The email address is required.</div>
+                    </span>
+                  </ng-container>
+                </sprk-input-container>
+                <ng-container *ngIf="!addContactForm.valid && emailAddress.touched && emailAddress.hasError('required')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The email address is required.</div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="!addContactForm.valid && emailAddress.touched && emailAddress.hasError('minlength')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The email address length is not valid (5).</div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="!addContactForm.valid && emailAddress.touched && emailAddress.hasError('invalidEmailAddress')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The email address format is not valid.</div>
+                  </span>
+                </ng-container>
+                <!--  -->
+
+                <!-- PHONE -->
+                <sprk-input-container>
+                  <label sprkLabel>Phone</label>
+                  <input
+                    formControlName="phone"
+                    placeholder="(000) 000-0000"
+                    maxlength="45"
+                    name="phone"
+                    type="text"
+                    [ngClass]="hasError('phone') ? 'sprk-b-TextInput--error' : ''"
+                    sprkInput
+                  />
+                </sprk-input-container>
+                <ng-container *ngIf="!addContactForm.valid && addContactForm.get('phone').touched && phone.hasError('required')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The phone is required.</div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="!addContactForm.valid && addContactForm.get('phone').touched && phone.hasError('minlength')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The phone minimum length is 10 characters.</div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="!addContactForm.valid && addContactForm.get('phone').touched && phone.hasError('maxlength')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The phone maximum length is 25 characters.</div>
+                  </span>
+                </ng-container>
+              </div>
+            </div>
+          </sprk-card>
+
+          <sprk-divider idString="divider-1"></sprk-divider>
+
+          <sprk-card cardType="base" idString="card-default">
+            <div
+              class="
+              sprk-o-Stack__item
+              sprk-c-Card__content
+              sprk-o-Stack
+              sprk-o-Stack--medium"
+            >
+              <div class="qc-new-contact--default-item">
+                <!-- ADDRESS INFORMATION -->
+                <h3>Address Information</h3>
+
+                <!-- ADDRESS 1 -->
+                <sprk-input-container>
+                  <label sprkLabel>Address 1</label>
+                  <input
+                    width="300"
+                    formControlName="address1"
+                    maxlength="60"
+                    name="address1"
+                    type="text"
+                    [ngClass]="hasError('address1') ? 'sprk-b-TextInput--error' : ''"
+                    sprkInput
+                  />
+                </sprk-input-container>
+                <ng-container *ngIf="!addContactForm.valid && address1.touched && address1.hasError('required')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The address is required.</div>
+                  </span>
+                </ng-container>
+
+                <!-- ADDRESS 2 -->
+                <sprk-input-container>
+                  <label sprkLabel>Address 2</label>
+                  <input
+                    formControlName="address2"
+                    maxlength="60"
+                    name="address2"
+                    type="text"
+                    [ngClass]="hasError('address2') ? 'sprk-b-TextInput--error' : ''"
+                    sprkInput
+                  />
+                </sprk-input-container>
+                <ng-container *ngIf="!addContactForm.valid && addContactForm.get('address2').touched && address2.hasError('maxlength')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The address 2 maximum length is 60 characters.</div>
+                  </span>
+                </ng-container>
+
+                <!-- CITY -->
+                <sprk-input-container>
+                  <label sprkLabel>City</label>
+                  <input
+                    formControlName="city"
+                    maxlength="60"
+                    name="city"
+                    type="text"
+                    [ngClass]="hasError('city') ? 'sprk-b-TextInput--error' : ''"
+                    sprkInput
+                  />
+                </sprk-input-container>
+                <ng-container *ngIf="!addContactForm.valid && city.touched && city.hasError('required')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The city is required.</div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="!addContactForm.valid && city.touched && city.hasError('maxlength')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The city maximum length is 45 characters.</div>
+                  </span>
+                </ng-container>
+
+                <!-- STATE -->
+                <sprk-input-container>
+                  <label sprkLabel>State</label>
+                  <input
+                    formControlName="state"
+                    maxlength="60"
+                    name="state"
+                    type="text"
+                    [ngClass]="hasError('state') ? 'sprk-b-TextInput--error' : ''"
+                    sprkInput
+                  />
+                </sprk-input-container>
+                <ng-container *ngIf="!addContactForm.valid && state.touched && state.hasError('required')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The state is required.</div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="!addContactForm.valid && state.touched && state.hasError('maxlength')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The state maximum length is 45 characters.</div>
+                  </span>
+                </ng-container>
+
+                <!-- POSTAL CODE/ZIP CODE -->
+                <sprk-input-container>
+                  <label sprkLabel>Postal Code/Zip Code</label>
+                  <input
+                    formControlName="postalCode"
+                    maxlength="60"
+                    name="postalCode"
+                    type="text"
+                    [ngClass]="hasError('postalCode') ? 'sprk-b-TextInput--error' : ''"
+                    sprkInput
+                  />
+                </sprk-input-container>
+                <ng-container *ngIf="!addContactForm.valid && postalCode.touched && postalCode.hasError('required')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The postal code is required.</div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="!addContactForm.valid && postalCode.touched && postalCode.hasError('maxlength')">
+                  <span sprkFieldError>
+                    <sprk-icon iconType="exclamation-filled-small" additionalClasses="sprk-b-ErrorIcon"></sprk-icon>
+                    <div class="sprk-b-ErrorText">The postal code maximum length is 25 characters.</div>
+                  </span>
+                </ng-container>
+              </div>
+            </div>
+          </sprk-card>
+
+          <sprk-divider idString="divider-1"></sprk-divider>
+
+          <div class="qc-new-contact--default-item">
+            <button variant="secondary" idString="button-secondary" sprkButton (click)="discard()" idString="button-secondary" sprkButton>
+              Discard changes
+            </button>
+            &nbsp;
+            <button type="submit" idString="button-primary" sprkButton>
+              Add contact
+            </button>
+          </div>
+        </form>
+      </ng-template>
+
+      <sprk-divider idString="divider-1"></sprk-divider>
+    </div>
+  </section>
+</div>

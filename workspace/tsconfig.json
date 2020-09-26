@@ -1,0 +1,37 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@angular-architecture/actions": ["libs/actions/src/index.ts"],
+      "@angular-architecture/components": ["libs/components/src/index.ts"],
+      "@angular-architecture/configuration": ["libs/configuration/src/index.ts"],
+      "@angular-architecture/error-handling": ["libs/error-handling/src/index.ts"],
+      "@angular-architecture/foundation": ["libs/foundation/src/index.ts"],
+      "@angular-architecture/http-service": ["libs/http-service/src/index.ts"],
+      "@angular-architecture/logging": ["libs/logging/src/index.ts"],
+      "@angular-architecture/notification": ["libs/notification/src/index.ts"],
+      "@angular-architecture/rules-engine": ["libs/rules-engine/src/index.ts"],
+      "@angular-architecture/api/contacts": ["libs/api/contacts/src/index.ts"],
+      "@angular-architecture/reference/micro-apps/contacts-app": ["libs/reference/micro-apps/contacts-app/src/index.ts"],
+      "@angular-architecture/reference/domain/contacts-service": ["libs/reference/domain/contacts-service/src/index.ts"],
+      "@angular-architecture/common": ["libs/common/src/index.ts"],
+      "@angular-architecture/reference/domain/common": ["libs/reference/domain/common/src/index.ts"],
+      "@angular-architecture/reference/domain/validation": ["libs/reference/domain/validation/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

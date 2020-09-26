@@ -1,0 +1,23 @@
+{
+  "name": "@angular-architecture/actions",
+  "version": "0.0.1",
+  "description": "@angular-architecture/actions is a framework to build amazing business logic.",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "typescript",
+    "business logic",
+    "business actions",
+    "business rules",
+    "angularlicious",
+    "validation",
+    "javascript rules",
+    "Matt Vaughn",
+    "AngularArchitecture.com"
+  ],
+  "author": "matt@angulararchitecture.com",
+  "peerDependencies": {
+    "@angular/common": "^8.0.0",
+    "@angular/core": "^8.0.0"
+  }
+}

@@ -1,0 +1,51 @@
+<div class="container">
+  <sprk-highlight-board
+    heading="Hello, Welcome To Spark Design System"
+    ctaText="Designers"
+    ctaHref="#nogo"
+    ctaText2="Developers"
+    ctaHref2="#nogo"
+    imgSrc="https://spark-assets.netlify.app/desktop.jpg"
+    imgAlt="Contacts List Page"
+    idString="highlightboard-1"
+  >
+  </sprk-highlight-board>
+
+  <section id="default" class="qc-landing--default">
+    <div class="qc-landing--default-item">
+      <h1>Contacts</h1>
+      <sprk-stack itemSpacing="large" splitAt="large" additionalClasses="sprk-o-Stack--center-row">
+        <div class="sprk-c-Card__container sprk-o-Stack__item--flex@l" sprkStackItem>
+          <sprk-card
+            cardType="teaser"
+            media="img"
+            idString="card-two-up-1"
+            imgSrc="https://spark-assets.netlify.app/desktop.jpg"
+            body="{{ listCardBodyText }}"
+            ctaType="button"
+            additionalCtaClasses="sprk-c-Button--secondary"
+            ctaText="{{ listCardButtonText }}"
+            title="{{ listCardTitle }}"
+            (click)="viewContacts()"
+            sprkStackItem
+          ></sprk-card>
+        </div>
+        <div class="sprk-c-Card__container sprk-o-Stack__item--flex@l" sprkStackItem>
+          <sprk-card
+            cardType="teaser"
+            media="img"
+            idString="card-two-up-1"
+            imgSrc="https://spark-assets.netlify.app/desktop.jpg"
+            body="{{ addContactCardBodyText }}"
+            ctaType="button"
+            additionalCtaClasses="sprk-c-Button--secondary"
+            ctaText="{{ addContactCardButtonText }}"
+            title="{{ addContactCardTitle }}"
+            (click)="addContact()"
+            sprkStackItem
+          ></sprk-card>
+        </div>
+      </sprk-stack>
+    </div>
+  </section>
+</div>

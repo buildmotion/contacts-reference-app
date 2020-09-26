@@ -1,0 +1,27 @@
+h1 {
+  visibility: visible;
+  animation-delay: 0.2s;
+  animation-name: fadeIn;
+  margin-top: 96px;
+}
+
+#landing h3 {
+  margin-top: 0px;
+}
+
+.qc-landing--default {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-right: 66px;
+  padding-left: 66px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.qc-landing--default-item {
+  align-self: center;
+  flex-basis: 88%;
+  padding-left: 12px;
+}
