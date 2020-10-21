@@ -10,14 +10,17 @@ const routes: Routes = [
   },
   {
     path: 'contacts/landing',
+    component: LayoutComponent,
     loadChildren: () => import('@angular-architecture/reference/micro-apps/contacts-app').then(m => m.ContactsAppModule),
   },
   {
     path: 'contacts/add',
+    component: LayoutComponent,
     loadChildren: () => import('@angular-architecture/reference/micro-apps/contacts-app').then(m => m.ContactsAppModule),
   },
   {
     path: 'contacts/list',
+    component: LayoutComponent,
     loadChildren: () => import('@angular-architecture/reference/micro-apps/contacts-app').then(m => m.ContactsAppModule),
   },
 ];

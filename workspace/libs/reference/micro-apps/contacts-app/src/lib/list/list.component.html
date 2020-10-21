@@ -17,7 +17,7 @@
       </sprk-modal>
     </ng-container>
     <ng-template #contactListTemplate>
-      <ng-container *ngIf="contacts$ | async as contacts; else listTemplate">
+      <ng-container *ngIf="contacts$ | async as contacts; else noDataTemplate">
         <div class="qc-contact-list--default-item ">
           <h1>Contacts</h1>
         </div>
@@ -57,7 +57,7 @@
         </sprk-table>
         <sprk-divider idString="divider-1"></sprk-divider>
       </ng-container>
-      <ng-template #listTemplate>
+      <ng-template #noDataTemplate>
         <!-- DISPLAY NO DATA MESSAGE TO USER -->
         <sprk-alert alertType="fail" idString="alert-fail-1" analyticsString="object.action.event">
           The application attempted to retrieve your contacts - however, it was not successful.
